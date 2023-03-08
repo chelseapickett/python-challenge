@@ -8,9 +8,8 @@ csvpath = os.path.join(dirname, 'Resources', 'budget_data.csv')
 with open(csvpath) as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',')
     print(csvreader)
-    # read the header row first
+    # skip the header row
     csv_header = next(csvreader)
-    #print(f"CSV Header: {csv_header}")
     
     #define variables
     months = set()
@@ -76,4 +75,13 @@ with open(csvpath) as csvfile:
     #The greatest decrease in profits (date and amount) over the entire period
     print(f"Greatest Decrease in Profits: {min_difference_date} (${min_difference})")
 
-    #In addition, your final script should both print the analysis to the terminal and export a text file with the results
+#your final script should...export a text file with the results
+results_analysis = os.path.join(dirname, 'Analysis', 'new.csv')
+with open(results_analysis, 'w') as csvfile:
+
+    csvwriter = csv.writer(csvfile, delimiter=',')
+
+    csvwriter.writerow(['Total Months:','Total:','Average Change:','Greatest Increase in Profits:','Greatest Decrease in Profits:'])
+
+    csvwriter.writerow([f"${len(months)}", f"${total_profit_losses}", f"${round(average(changes_profit_losses),2)}", f"{max_difference_date} (${max_difference})", f"{min_difference_date} (${min_difference})"])
+
