@@ -15,9 +15,13 @@ with open(csvpath) as csvfile:
     #define variables
     months = set()
     changes_profit_losses = []
-
     total_profit_losses = 0 
     previous_profit_losses = None
+    max_difference_date = None
+    min_difference_date = None
+    max_difference = None
+    min_difference = None
+
     # read each row of data after the header
     for row in csvreader:
         #print(row) 
@@ -34,7 +38,14 @@ with open(csvpath) as csvfile:
             difference = profit_losses - previous_profit_losses 
             #each time difference is calculated it will be added to the changes_profit_loss list
             changes_profit_losses.append(difference)
-       
+            #find max_difference
+            if max_difference == None or difference > max_difference:
+                max_difference = difference
+                max_difference_date = month
+            #find min_difference
+            if min_difference == None or difference < min_difference:
+                min_difference = difference
+                min_difference_date = month
         # saves the previous row value to start with that on next row iteration
         previous_profit_losses = profit_losses 
     
@@ -57,10 +68,12 @@ with open(csvpath) as csvfile:
     print(f"Total: ${total_profit_losses}\n")
 
     #The changes in "Profit/Losses" over the entire period, and then the average of those changes
-    print(f"Average Change: ${round(average(changes_profit_losses),2)}")
+    print(f"Average Change: ${round(average(changes_profit_losses),2)}\n")
           
     #The greatest increase in profits (date and amount) over the entire period
-
+    print(f"Greatest Increase in Profits: {max_difference_date} (${max_difference})\n")
+    
     #The greatest decrease in profits (date and amount) over the entire period
+    print(f"Greatest Decrease in Profits: {min_difference_date} (${min_difference})")
 
     #In addition, your final script should both print the analysis to the terminal and export a text file with the results
