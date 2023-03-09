@@ -8,7 +8,7 @@ csvpath = os.path.join(dirname, 'Resources', 'budget_data.csv')
 with open(csvpath) as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',')
     print(csvreader)
-    # skip the header row
+    # store/skip the header row
     csv_header = next(csvreader)
     
     #define variables
