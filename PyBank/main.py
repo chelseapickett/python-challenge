@@ -82,5 +82,5 @@ with open(results_analysis, 'w') as csvfile:
 
     csvwriter.writerow(['Total Months:','Total:','Average Change:','Greatest Increase in Profits:','Greatest Decrease in Profits:'])
 
-    csvwriter.writerow([f"${len(months)}", f"${total_profit_losses}", f"${round(average(changes_profit_losses),2)}", f"{max_difference_date} (${max_difference})", f"{min_difference_date} (${min_difference})"])
+    csvwriter.writerow([f"{len(months)}", f"${total_profit_losses}", f"${round(average(changes_profit_losses),2)}", f"{max_difference_date} (${max_difference})", f"{min_difference_date} (${min_difference})"])
 
