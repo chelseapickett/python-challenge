@@ -12,7 +12,8 @@ The first dataset examined was PyBank, a financial data set that has two columns
 - Net total amount of profit/losses
 - Change from one profit/loss row to the next
 - Average change of the profit/losses 
-- Greatest increase in profits and the greatest decrease in profits. 
+- Greatest increase in profits 
+- Greatest decrease in profits 
 
 It prints these results in the terminal and also exports a file (new.csv) with the results.
 
