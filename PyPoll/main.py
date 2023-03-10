@@ -15,7 +15,8 @@ with open(csvpath) as csvfile:
     counties=[]
     total_votes=0
     candidate_vote_counts = {}
-    
+    winning_counts = 0
+    winning_candidate=""
     # read each row of data after the header
     for row in csvreader:
         county_id=int(row[0])
@@ -31,8 +32,6 @@ with open(csvpath) as csvfile:
         else: 
             candidate_vote_counts[candidate]=1
 
-
-
     print("Election Results\n")
 
     print("----------------------------------------------\n")
@@ -41,16 +40,22 @@ with open(csvpath) as csvfile:
     print(f"Total Votes: {total_votes}\n")
 
     print("----------------------------------------------\n")
-    
-    # A complete list of candidates who received votes
-    print(candidates)
-   
-    # The total number of votes each candidate won
-    print(candidate_vote_counts)
-    
-    
-    # The percentage of votes each candidate won
 
+    for candidate in candidates:
+        #print(candidate)
+        votes = candidate_vote_counts.get(candidate)
+        percentage_of_votes = (votes/total_votes) *100 
+        # A complete list of candidates who received votes, percentage of votes each candidate won, total number of votes each candidate won
+        print(f"{candidate}: {round(percentage_of_votes,3)}% ({votes})\n")
+
+        if votes > winning_counts:
+            winning_counts = votes
+            winning_candidate = candidate
+    
+    print("----------------------------------------------\n")
     # The winner of the election based on popular vote
-
+    print(f"Winner: {winning_candidate}\n")     
+    
+    print("----------------------------------------------\n")
+    
     # Final script should both print the analysis to the terminal and export a text file with the results
