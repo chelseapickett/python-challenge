@@ -15,13 +15,13 @@ The first dataset examined was PyBank, a financial data set that has two columns
 - Greatest increase in profits 
 - Greatest decrease in profits 
 
-The script prints these results in the terminal and also exports a file (new.csv) with the results.
+The script prints these results in the terminal and also exports a file (`Analysis/new.csv`) with the results.
 
 The second dataset examined was PyPoll, a voter dataset which has three columns: ballot id, county and candidate. The script created for this data set analyzes and calculates:
 - the total number of votes cast, 
 - the candidates who received votes, 
 - the total number of votes each candidate received 
 - the percentage of votes each candidate received  
-- candidate who received the most votes. 
+- the candidate who received the most votes. 
 
-This script also prints in the terminal and exports a file (election_results.csv) with the results. 
+This script also prints in the terminal and exports a file (`Analysis/election_results.csv`) with the results. 
