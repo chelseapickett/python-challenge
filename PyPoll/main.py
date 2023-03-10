@@ -66,9 +66,9 @@ with open(poll_analysis, 'w') as csvfile:
     
     csvwriter = csv.writer(csvfile, delimiter=',')
 
-    csvwriter.writerow(["Total Votes:", "Winner:"])
+    csvwriter.writerow([f"Total Votes:{total_votes}"])
     
-    csvwriter.writerow([total_votes, winning_candidate])
+    csvwriter.writerow([f"Winner:{winning_candidate}"])
 
     csvwriter.writerow([f"{candidate}: {round(percentage_of_votes,3)}% ({votes})\n"])
 
