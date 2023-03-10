@@ -4,7 +4,6 @@ import csv
 dirname = os.path.dirname(__file__)
 csvpath = os.path.join(dirname, 'Resources', 'budget_data.csv')
 
-
 with open(csvpath) as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',')
     print(csvreader)

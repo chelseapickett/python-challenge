@@ -58,4 +58,20 @@ with open(csvpath) as csvfile:
     
     print("----------------------------------------------\n")
     
-    # Final script should both print the analysis to the terminal and export a text file with the results
+# Final script should both print the analysis to the terminal and export a text file with the results
+
+poll_analysis = os.path.join(dirname, 'Analysis', 'election_results.csv')
+
+with open(poll_analysis, 'w') as csvfile:
+    
+    csvwriter = csv.writer(csvfile, delimiter=',')
+
+    csvwriter.writerow(["Election Results\n"])
+    
+    csvwriter.writerow([f"Total Votes: {total_votes}\n"])
+
+    csvwriter.writerow([f"{candidate}: {round(percentage_of_votes,3)}% ({votes})\n"])
+
+    csvwriter.writerow([f"Winner: {winning_candidate}\n"])
+
+
