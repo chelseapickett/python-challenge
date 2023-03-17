@@ -17,6 +17,8 @@ with open(csvpath) as csvfile:
     candidate_vote_counts = {}
     winning_counts = 0
     winning_candidate=""
+    list_of_candidates=[]
+
     # read each row of data after the header
     for row in csvreader:
         county_id=int(row[0])
@@ -46,12 +48,14 @@ with open(csvpath) as csvfile:
         votes = candidate_vote_counts.get(candidate)
         percentage_of_votes = (votes/total_votes) *100 
         # A complete list of candidates who received votes, percentage of votes each candidate won, total number of votes each candidate won
-        print(f"{candidate}: {round(percentage_of_votes,3)}% ({votes})\n")
+        candidate_results=(f"{candidate}: {round(percentage_of_votes,3)}% ({votes})\n")
+        list_of_candidates.append(candidate_results)
+        print(candidate_results)
 
         if votes > winning_counts:
             winning_counts = votes
             winning_candidate = candidate
-    
+
     print("----------------------------------------------\n")
     # The winner of the election based on popular vote
     print(f"Winner: {winning_candidate}\n")     
@@ -70,7 +74,7 @@ with open(poll_analysis, 'w') as csvfile:
     
     csvwriter.writerow([f"Winner:{winning_candidate}"])
 
-    csvwriter.writerow([f"{candidate}: {round(percentage_of_votes,3)}% ({votes})\n"])
+    csvwriter.writerow(list_of_candidates)
 
     
 
